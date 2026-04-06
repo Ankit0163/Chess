@@ -23,5 +23,7 @@ A simple chess game built using React and TypeScript.
 - Online multiplayer
 - Game history storage
 
+## Update
+This is a test update.
 ## 👨‍💻 Author
 Ankit Gupta
