@@ -4,17 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================= BASE VARIABLES ================= */
+
 @layer base {
 :root {
 --background: 220 20% 7%;
 --foreground: 210 20% 92%;
 
-```
 --card: 220 18% 10%;
 --card-foreground: 210 20% 92%;
-
---popover: 220 18% 10%;
---popover-foreground: 210 20% 92%;
 
 --primary: 160 84% 39%;
 --primary-foreground: 220 20% 7%;
@@ -28,39 +26,35 @@
 --accent: 270 60% 55%;
 --accent-foreground: 210 20% 95%;
 
---destructive: 0 72% 51%;
---destructive-foreground: 210 40% 98%;
-
 --border: 220 14% 18%;
---input: 220 14% 18%;
 --ring: 160 84% 39%;
 
 --radius: 0.75rem;
 
---glass: 220 18% 10%;
---glass-border: 220 14% 22%;
 --glow-primary: 160 84% 39%;
 --glow-accent: 270 60% 55%;
-```
+}
+}
 
-}
-}
+/* ================= BASE STYLES ================= */
 
 @layer base {
 
 * {
-  @apply border-border;
+  border-color: hsl(var(--border));
   }
 
 body {
-@apply bg-background text-foreground font-sans antialiased;
+background-color: hsl(var(--background));
+color: hsl(var(--foreground));
+font-family: 'Inter', sans-serif;
 }
 }
 
-/* ================= CHESS BOARD STYLING ================= */
+/* ================= CHESS BOARD ================= */
 
 @layer utilities {
-/* ♟️ Chess.com Style Board */
+/* Chess.com Style */
 .chess-board-light {
 background-color: #eeeed2;
 }
@@ -69,23 +63,23 @@ background-color: #eeeed2;
 background-color: #769656;
 }
 
-/* 🔥 Highlight moves */
+/* Move highlight */
 .chess-board-highlight {
 background-color: rgba(255, 255, 0, 0.4);
 }
 
-/* 🔥 Selected piece */
+/* Selected piece */
 .chess-board-selected {
 background-color: rgba(255, 215, 0, 0.6);
 box-shadow: inset 0 0 10px gold;
 }
 
-/* 🔴 King in check */
+/* King in check */
 .chess-board-check {
 background: radial-gradient(circle, rgba(255, 0, 0, 0.6), transparent 70%);
 }
 
-/* 🟡 Last move highlight */
+/* Last move */
 .chess-board-last-move-light {
 background-color: #f6f669;
 }
@@ -94,23 +88,30 @@ background-color: #f6f669;
 background-color: #baca2b;
 }
 
-/* ✨ Hover effect */
+/* Hover */
 .square:hover {
 transform: scale(1.05);
-transition: all 0.2s ease-in-out;
+transition: 0.2s;
 cursor: pointer;
 }
 }
 
-/* ================= UI ENHANCEMENTS ================= */
+/* ================= UI COMPONENTS ================= */
 
 @layer components {
 .glass {
-@apply bg-card/60 backdrop-blur-xl border border-glass-border rounded-xl;
+background: rgba(30, 30, 30, 0.6);
+backdrop-filter: blur(10px);
+border-radius: 12px;
+border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-strong {
-@apply bg-card/80 backdrop-blur-2xl border border-glass-border rounded-xl shadow-2xl;
+background: rgba(30, 30, 30, 0.8);
+backdrop-filter: blur(20px);
+border-radius: 12px;
+border: 1px solid rgba(255, 255, 255, 0.15);
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .glow-primary {
@@ -122,6 +123,9 @@ box-shadow: 0 0 40px -10px hsl(var(--glow-accent) / 0.3);
 }
 
 .text-gradient {
-@apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+background: linear-gradient(to right, #4ade80, #a855f7);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
 }
